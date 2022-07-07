@@ -1,0 +1,14 @@
+{% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+            <li>
+                {% comment %} hardcoded {% endcomment %}
+                {% comment %} <a href="/polls/{{ question.id }}">{{ question.question_text }}</a> {% endcomment %}
+                {% comment %}  using the {% url %} template tag  {% endcomment %}
+                <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available</p>
+{% endif %}
